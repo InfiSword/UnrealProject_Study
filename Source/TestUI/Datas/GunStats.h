@@ -14,3 +14,4 @@ struct FGunStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float FireRate = 0.1f;
 };
+

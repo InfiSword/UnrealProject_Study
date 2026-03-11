@@ -1,33 +1,28 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
+#include "BaseCharacter.h"
 #include "MyTestCharacter.generated.h"
 
 class UInventoryComponent;
 
 UCLASS()
-class TESTUI_API AMyTestCharacter : public ACharacter
+class TESTUI_API AMyTestCharacter : public ABaseCharacter
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
 	AMyTestCharacter();
-	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Inventory")
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
 	UInventoryComponent* InventoryComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Currency")
+	int32 Coin = 1000;
+
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void OnInteractKeyPressed();
+
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 };
